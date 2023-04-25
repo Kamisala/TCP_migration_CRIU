@@ -16,21 +16,21 @@ Start server.py on the dumpHost after launching dump_server.py. Send the server'
 
 Start client.py on the client.
 
-A. Connect to the server, and download the file.txt from the server.
+  A. Connect to the server, and download the file.txt from the server.
 
-B. During the transmission, when the nfq module detects that the payload contains the sensitive keyword "password":
+  B. During the transmission, when the nfq module detects that the payload contains the sensitive keyword "password":
 
-a. Discard the packet.
+  a. Discard the packet.
 
-b. Send a "dump" signal to the dump_server.
-  - dump_server saves the state of the server.
+  b. Send a "dump" signal to the dump_server.
+    - dump_server saves the state of the server.
 
-c. Send a "restore" signal to the restore_server.
-  - restore_server assigns an additional IP address to the local host reHost (using the address bound by server.py).
-  - restore_server replaces the content of file.txt with password_2.txt.
-  - restore_server restores the server process on the local host reHost.
+  c. Send a "restore" signal to the restore_server.
+    - restore_server assigns an additional IP address to the local host reHost (using the address bound by server.py).
+    - restore_server replaces the content of file.txt with password_2.txt.
+    - restore_server restores the server process on the local host reHost.
 
-d. Modify the local ARP table to redirect network traffic from client and dumpHost to client and reHost.
+  d. Modify the local ARP table to redirect network traffic from client and dumpHost to client and reHost.
 
 The client continues to receive file.txt from reHost until the end of the transmission. At this point, the client has received file.txt with the first portion constructed from password_1.txt, and the remaining portion with the content of password_2.txt.
 （Specific content can view the video）
