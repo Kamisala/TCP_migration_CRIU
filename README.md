@@ -17,6 +17,7 @@ In the non-migration case, when the Client starts the client.py program, it will
 
 1. The client connects to the server and begins downloading the `file.txt` text file.
 2. At some point during the transfer, netfilterqueue detects the string "password" in the payload:
+   
    a. The data packet is discarded.
    
    b. A "dump" signal is sent to the dump_server, which saves the state of the dump server.
