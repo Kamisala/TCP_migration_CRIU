@@ -18,10 +18,15 @@ In the non-migration case, when the Client starts the client.py program, it will
 1. The client connects to the server and begins downloading the `file.txt` text file.
 2. At some point during the transfer, netfilterqueue detects the string "password" in the payload:
    a. The data packet is discarded.
+   
    b. A "dump" signal is sent to the dump_server, which saves the state of the dump server.
+   
    c. A "restore" signal is sent to the restore_server, which assigns an additional IP to the local host and modifies the `file.txt` content to `password_2.txt`.
+   
    d. The restore_server restores the server process on the local host.
+   
    e. The local ARP table is modified to redirect network traffic from client and dumpHost to client and restoreHost.
+   
    f. The client continues to receive the `file.txt`, which now contains the content of both `password_1.txt` and `password_2.txt`.
 （Specific content can view the video）
 ## Contributing
